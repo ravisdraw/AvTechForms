@@ -59,7 +59,7 @@ export class FormsComponent implements OnInit {
         item.labelName = this.inputValue
       }
     })
-    console.log(this.objectArray);
+    // console.log(this.objectArray);
   }
 
   createAndPushObject(input:any) {

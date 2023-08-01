@@ -19,7 +19,7 @@ export class FormDialogComponent implements OnInit{
     }
   }
   ngOnInit(): void {
-    console.log(this.inputValue);
+    // console.log(this.inputValue);
   }
 
 
