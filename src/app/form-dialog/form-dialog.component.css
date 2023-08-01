@@ -1,0 +1,17 @@
+/* form-dialog.component.css */
+
+.input-field-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .form-field {
+    margin-right: 15px;
+    width: 200px;
+  }
+  
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 24px;
+  }

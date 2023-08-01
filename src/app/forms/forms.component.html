@@ -1,0 +1,93 @@
+<div class="forms-container">
+  <div class="section1">
+    <ul>
+      <li (click)="createAndPushObject('Text')"><mat-icon>A</mat-icon> <p>Text</p></li>
+      <li (click)="createAndPushObject('Select')"><mat-icon>arrow_drop_down</mat-icon> <p>Select</p></li>
+      <li (click)="createAndPushObject('Number')"><mat-icon>exposure_plus_1</mat-icon> <p>Number</p></li>
+      <li (click)="createAndPushObject('Radio')"><mat-icon>radio_button_checked</mat-icon> <p>Radio</p></li>
+      <li (click)="createAndPushObject('Date')"><mat-icon>date_range</mat-icon> <p>Date</p></li>
+      <li (click)="createAndPushObject('Checkbox')"><mat-icon>check_box</mat-icon> <p>Checkbox</p></li>
+      
+    </ul>
+  </div>
+  <div class="section2">
+    <div class="form-wrapper">
+      <mat-card class="custom-card" *ngFor="let data of objectArray; let i=index" (click)="checkSelectedForm(data)">
+        <mat-card-header>
+          <mat-card-title class="card-title">
+            <mat-radio-button class="radio-btn" value="after" [checked]="data.selected">{{data.category}}</mat-radio-button>
+            <mat-icon color="green" (click)="removeItem(data.id)">remove_circle</mat-icon>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <form class="form-input">
+            <mat-form-field class="form-input-field" *ngIf="data.category === 'Text'">
+              <input matInput placeholder="First name" type="text">
+            </mat-form-field>
+            <mat-form-field class="form-input-field" *ngIf="data.category === 'Number'">
+              <input matInput placeholder="First name" type="number">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="form-input-field" *ngIf="data.category === 'Select'">
+              <mat-label>Select an option</mat-label>
+              <mat-select>
+                <mat-option value="option1">AvTech</mat-option>
+                <mat-option value="option2">FrontEnd Developer</mat-option>
+                <mat-option value="option3">AvTech</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-checkbox appearance="fill" class="form-input-field" *ngIf="data.category === 'Checkbox'">Checked</mat-checkbox>
+            <mat-form-field appearance="fill" class="form-input-field" *ngIf="data.category === 'Date'">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="datepicker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field> 
+            <mat-radio-button value="1"  *ngIf="data.category === 'Radio'">Option 1</mat-radio-button>
+          </form>
+        </mat-card-content>
+    </mat-card>
+    <div class="buttons" *ngIf="objectArray.length>0">
+      <button mat-raised-button color="primary" (click)="saveGoToHome()">Save</button>
+      <button mat-raised-button color="accent" (click)="goToHome()">Cancel</button>
+    </div>
+    </div>
+  </div>
+  <div class="section3">
+    <form class="small-form" *ngIf="selectedCard">
+      <mat-form-field class="small-form-field">
+        <mat-label>Label name</mat-label>
+        <input matInput placeholder="Input" [(ngModel)]="inputValue" name="first">
+      </mat-form-field>
+    
+      <mat-form-field class="small-form-field">
+        <input matInput placeholder="Default name">
+      </mat-form-field>
+
+      <div class="val-container">
+        <div class="val-line"><mat-divider></mat-divider></div>
+        <div class="val-text mat-typography"><b>Validations</b></div>
+        <div class="val-line"><mat-divider></mat-divider></div>
+      </div>
+
+      <mat-card class="val-card">
+        <mat-card-content>
+          <mat-checkbox class="form-input-field" >Required</mat-checkbox>
+        </mat-card-content>
+        <mat-form-field class="card-form-field">
+          <input matInput placeholder="Any message">
+        </mat-form-field>
+      </mat-card>
+      
+    </form>
+  </div>
+</div>
+
+
+  
